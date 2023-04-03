@@ -3,6 +3,7 @@ package com.coder.desafiospringbootcalccontroller.Controller;
 import com.coder.desafiospringbootcalccontroller.model.entity.Product;
 import com.coder.desafiospringbootcalccontroller.repositories.ProductRepository;
 import jakarta.persistence.Entity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +13,7 @@ import java.util.List;
 @RequestMapping("/products")
 public class ProdutController {
 
+    @Autowired
     ProductRepository productRepository;
 
 //    @GetMapping
@@ -20,8 +22,9 @@ public class ProdutController {
 //    }
 
     @PostMapping
-    public Product insertProduct(@RequestParam String name){
+    public @ResponseBody Product insertProduct(@RequestParam String name){
         Product product = new Product(name);
+        productRepository.save(product);
         return product;
     }
 
