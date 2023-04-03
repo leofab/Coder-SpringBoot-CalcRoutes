@@ -1,15 +1,16 @@
 package com.coder.desafiospringbootcalccontroller.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/calculadora")
 public class CalcController {
 
-    @GetMapping
-    public String CalculadoraIndex(){
-        return "Working";
+    @GetMapping("{firstValue}")
+    public Integer CalculadoraIndex(@PathVariable(name = "firstValue") Model model, Integer firstValue){
+        System.out.println(firstValue);
+        return firstValue;
     }
+
 }
