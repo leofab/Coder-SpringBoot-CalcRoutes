@@ -17,6 +17,11 @@ public class Product {
     public Product(String name){
         this.name = name;
     }
+    public Product(String name, double price, double disc ){
+        this.name = name;
+        this.price = price;
+        this.disc = disc;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,4 +29,10 @@ public class Product {
 
     @Column
     String name;
+
+    @Column
+    double price;
+
+    @Column
+    double disc;
 }
