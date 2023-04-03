@@ -16,10 +16,10 @@ public class ProdutController {
     @Autowired
     ProductRepository productRepository;
 
-//    @GetMapping
-//    public List<Product> findAll(){
-//        return productRepository.findAll();
-//    }
+    @GetMapping
+    public List<Product> findAll(){
+        return productRepository.findAll();
+    }
 
     @PostMapping
     public @ResponseBody Product insertProduct(@RequestParam String name){
@@ -27,5 +27,12 @@ public class ProdutController {
         productRepository.save(product);
         return product;
     }
+
+//    @PutMapping
+//    public @ResponseBody updateProduct(@RequestParam Long id, String name, double price, double disc){
+//        Product productUpdate = productRepository.getReferenceById(id);
+//
+//        return productRepository.save(productUpdate(name, price, disc));
+//    }
 
 }

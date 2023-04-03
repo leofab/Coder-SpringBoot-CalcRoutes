@@ -17,7 +17,7 @@ public class Product {
     public Product(String name){
         this.name = name;
     }
-    public Product(String name, double price, double disc ){
+    public Product(String name, Double price, Double disc ){
         this.name = name;
         this.price = price;
         this.disc = disc;
@@ -31,8 +31,8 @@ public class Product {
     String name;
 
     @Column
-    double price;
+    Double price;
 
     @Column
-    double disc;
+    Double disc;
 }
