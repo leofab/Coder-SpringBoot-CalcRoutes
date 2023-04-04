@@ -49,7 +49,8 @@ public class ProdutController {
 
     @GetMapping(path = "/nome/{prodName}")
     public Iterable<Product> findProductByName(@PathVariable String prodName){
-        return productRepository.findByNameContaining(prodName);
+//        return productRepository.findByNameContainingIgnoreCase(prodName);
+        return productRepository.searchByNameLike(prodName);
     }
 
     @PostMapping
