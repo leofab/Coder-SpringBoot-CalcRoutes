@@ -4,8 +4,10 @@ import com.coder.desafiospringbootcalccontroller.model.entity.Product;
 import com.coder.desafiospringbootcalccontroller.repositories.ProductRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +35,14 @@ public class ProdutController {
     @GetMapping(path = "/{id}")
     public Optional<Product> findById(@PathVariable Long id){
         return productRepository.findById(id);
+    }
+
+    //Pageable method PageRequest.of implementation
+    @GetMapping(path = "/pages/{page}/{qtdItens}")
+    public Iterable<Product> itensPerPage(@PathVariable int page, @PathVariable int qtdItens){
+        if(qtdItens >= 5) qtdItens = 5;
+        Pageable pagee = PageRequest.of(page, qtdItens);
+        return productRepository.findAll(pagee);
     }
 
     @PostMapping
