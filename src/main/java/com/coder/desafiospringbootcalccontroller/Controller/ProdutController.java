@@ -45,6 +45,13 @@ public class ProdutController {
         return productRepository.findAll(pagee);
     }
 
+    //Creating new method in Repository with Springboot Methods Names Convention
+
+    @GetMapping(path = "/nome/{prodName}")
+    public Iterable<Product> findProductByName(@PathVariable String prodName){
+        return productRepository.findByNameContaining(prodName);
+    }
+
     @PostMapping
     public @ResponseBody Product insertProduct(@RequestParam String name){
         Product product = new Product(name);
