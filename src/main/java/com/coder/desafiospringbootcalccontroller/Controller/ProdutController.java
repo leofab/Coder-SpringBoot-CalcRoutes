@@ -2,11 +2,11 @@ package com.coder.desafiospringbootcalccontroller.Controller;
 
 import com.coder.desafiospringbootcalccontroller.model.entity.Product;
 import com.coder.desafiospringbootcalccontroller.repositories.ProductRepository;
-import jakarta.persistence.Entity;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,7 +18,9 @@ public class ProdutController {
 
     @GetMapping
     public List<Product> findAll(){
-        return productRepository.findAll();
+        List<Product> products = productRepository.findAll();
+        System.out.println(products);
+        return products;
     }
 
     @PostMapping
@@ -29,7 +31,7 @@ public class ProdutController {
     }
 
     @PutMapping("/{id}")
-    public @ResponseBody Product updateProduct(@RequestParam(name = "id") Long id, String name, double price, double disc){
+    public @ResponseBody Product updateProduct(@Valid @RequestParam(name = "id") Long id, String name, double price, double disc){
         Product productUpdate = productRepository.getReferenceById(id);
         productUpdate.setName(name);
         productUpdate.setPrice(price);
