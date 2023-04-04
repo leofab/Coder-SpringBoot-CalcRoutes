@@ -28,11 +28,13 @@ public class ProdutController {
         return product;
     }
 
-//    @PutMapping
-//    public @ResponseBody updateProduct(@RequestParam Long id, String name, double price, double disc){
-//        Product productUpdate = productRepository.getReferenceById(id);
-//
-//        return productRepository.save(productUpdate(name, price, disc));
-//    }
+    @PutMapping("/{id}")
+    public @ResponseBody Product updateProduct(@RequestParam(name = "id") Long id, String name, double price, double disc){
+        Product productUpdate = productRepository.getReferenceById(id);
+        productUpdate.setName(name);
+        productUpdate.setPrice(price);
+        productUpdate.setDisc(disc);
+        return productRepository.save(productUpdate);
+    }
 
 }
