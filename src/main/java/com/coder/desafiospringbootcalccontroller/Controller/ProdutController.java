@@ -59,7 +59,14 @@ public class ProdutController {
 
     @DeleteMapping(path = "/{id}")
     public void deleteProductById(@PathVariable Long id){
+        try{
         productRepository.deleteById(id);
+        System.out.println("Produto de ID: " + id + " deletado com sucesso");
+        }catch (IllegalArgumentException  e){
+            System.out.println(e);
+        }finally {
+        System.out.println("Produto de ID: " + id + " deletado com sucesso");
+        }
     }
 
 }
