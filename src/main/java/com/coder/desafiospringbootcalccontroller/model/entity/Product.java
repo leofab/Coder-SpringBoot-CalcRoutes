@@ -1,6 +1,9 @@
 package com.coder.desafiospringbootcalccontroller.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,12 +30,16 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
+    @NotBlank
     @Column
     String name;
 
+    @Min(0)
     @Column
     Double price;
 
+    @Min(0)
+    @Max(1)
     @Column
     Double disc;
 }
